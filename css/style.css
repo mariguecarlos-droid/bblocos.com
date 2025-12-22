@@ -1,0 +1,775 @@
+
+        /* --- VARIÁVEIS DE CORES --- */
+        :root {
+            --primary-color: #0A2342;
+            --primary-hover: #1E3A5F;
+            --accent-color: #FF8C00;
+            --text-color: #333333;
+            --light-gray: #f4f4f4;
+            --border-color: #0A2342;
+            --white: #ffffff;
+            --whatsapp-color: #25d366; /* Cor oficial do WhatsApp */
+        }
+
+        /* --- RESET GERAL --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--text-color);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* --- LAYOUT UTILS --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ESTILO DO BOTÃO WHATSAPP (EM LINHA/TEXTO) */
+        .WhatsApp {
+            background-color: var(--whatsapp-color);
+            display: inline-flex; /* Mudado para inline-flex para alinhar ícone e texto */
+            align-items: center;  /* Centraliza verticalmente */
+            gap: 10px;            /* Espaço entre ícone e texto */
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: white !important; /* Força a cor branca no texto */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .WhatsApp:hover {
+            background-color: #1ebe57;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .WhatsApp i {
+            font-size: 1.2rem; /* Tamanho do ícone dentro do botão */
+        }
+
+        /* --- HEADER --- */
+        /* --- SEU CSS ORIGINAL (Mantido) --- */
+header {
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(12, 14, 133, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    /* Adicionei padding lateral para o conteúdo não colar na borda no celular */
+    padding: 0 20px; 
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 25px;
+    list-style: none; /* Garante que não tenha bolinhas */
+}
+
+.nav-menu a {
+    text-decoration: none; /* Garante que não tenha sublinhado padrão */
+    font-weight: 900;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+/* --- NOVAS ADIÇÕES: CSS DO MENU HAMBÚRGUER --- */
+
+/* Estilo das barras do ícone (escondido no PC) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--primary-color); /* Usa a cor da sua logo */
+}
+
+/* --- RESPONSIVIDADE (CELULAR - Max 768px) --- */
+@media (max-width: 768px) {
+    /* Mostra o ícone do menu */
+    .hamburger {
+        display: block;
+    }
+
+    /* Transforma o ícone em um 'X' quando ativo */
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Estilização do menu quando aberto no celular */
+    .nav-menu {
+        position: fixed;
+        left: 100%; /* Começa escondido fora da tela */
+        top: 80px; /* Altura exata do seu header-content */
+        gap: 0;
+        font-size: 25px;
+        flex-direction: column;
+        background-color: var(--white); /* Fundo branco */
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        display: flex;
+        height: 90vh;
+        z-index: 999;
+    }
+
+    /* Classe que o JS vai adicionar para mostrar o menu */
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 20px;
+    }
+}
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: var(--primary-color);
+            background-image: linear-gradient(rgba(10, 35, 66, 0.5), rgba(10, 35, 66, 0.7)), url('../img/fundo.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1, .hero p {
+            animation: fadeUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            animation-delay: 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        /* --- MAIN CONTENT (GRID) --- */
+        .main-layout {
+            display: grid;
+            gap: 40px;
+            padding-top: 60px;
+            padding: 60px 0;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            animation: slideRight 1s ease-out;
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            margin-top: 25px;
+            display: flex; /* Para alinhar o ícone grande */
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+            transition: padding-left 0.3s;
+        }
+
+        .sidebar ul li:hover {
+            padding-left: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #666;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .icon-cimento {
+            width: 80px;            
+            height: auto;           
+            object-fit: contain;      
+            vertical-align: middle;   
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .titulo-categoria {
+            background-color: var(--accent-color); /* Cinza com 50% de opacidade */
+            padding: 4px 15px;       /* Espaçamento interno */
+            border-radius: 8px 0px ;
+            border: 1px solid var(--border-color);       /* Bordas arredondadas */
+            width: fit-content;       /* A caixa ajusta ao tamanho do texto */
+            color: var(--text-color);              /* Texto branco para contraste (opcional) */
+            margin-bottom: 20px;
+        }
+
+        /* Product List Styles */
+        .products-header {
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        /* --- MUDANÇA 1 AQUI: Ajuste do Grid Container --- */
+        .products-grid {
+            display: grid;
+            /* Mudei de 280px para 180px para permitir mais itens em telas menores */
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- MUDANÇA 2 AQUI: Ajuste do Cartão Individual --- */
+        .product-card {
+            /* width: 150px;  <-- REMOVIDO: Não fixamos mais a largura */
+            background: var(--white);
+            border: 1px solid #d7d0d0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: fadeUp 0.8s forwards;
+            /* Adicionado para garantir que o card ocupe a largura da coluna do grid */
+            width: 100%; 
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(10, 35, 66, 0.306);
+            border-color: var(--primary-color);
+        }
+
+        .product-img {
+            height: 140px;
+            width: 100%;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-img img {
+            max-height: 90%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .product-info span {
+            display: block;
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .product-info p {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .banner-destaque {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .banner-destaque img {
+            height: 50px;
+            width: auto;
+            margin: 0 auto;
+        }
+
+        /* --- REVIEWS --- */
+        .reviews-section {
+            background-color: #f9f9f9;
+            padding: 80px 0;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .reviews-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .reviews-header p {
+            color: #666;
+        }
+
+        /* --- CSS ORIGINAL DOS REVIEWS (Para Desktop) --- */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            /* Adicionado padding inferior para a sombra não cortar ao rolar */
+            padding-bottom: 20px; 
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(10, 35, 66, 0.705);
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease;
+            /* Adicionado para o cartão ocupar a altura total se necessário */
+            height: 100%;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #555;
+            background-image: url('');
+            background-size: cover;
+        }
+
+        .user-info h4 {
+            font-size: 1rem;
+            margin-bottom: 2px;
+            color: var(--primary-color);
+        }
+
+        .user-info span {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .stars {
+            color: #f5c518;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* --- NOVA ADIÇÃO: CARROSSEL DE REVIEWS NO CELULAR --- */
+        @media (max-width: 768px) {
+            .reviews-grid {
+                /* Muda de Grid para Flexbox */
+                display: flex;
+                /* Permite rolagem horizontal */
+                overflow-x: auto;
+                /* Cria o efeito de "imã" ao rolar (scroll snap) */
+                scroll-snap-type: x mandatory;
+                /* Espaçamento menor entre os cards */
+                gap: 20px;
+                /* Remove a barra de rolagem visualmente (opcional, mas fica mais limpo) */
+                scrollbar-width: none; /* Firefox */
+                -ms-overflow-style: none;  /* IE 10+ */
+                padding-bottom: 25px; /* Espaço extra para a sombra não cortar */
+                
+                /* Garante uma rolagem suave no iOS */
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Esconde a barra de rolagem no Chrome/Safari */
+            .reviews-grid::-webkit-scrollbar {
+                display: none;
+            }
+
+            .review-card {
+                /* O cartão não vai encolher (0) nem crescer (0), e terá uma largura base de 85% da tela */
+                flex: 0 0 85%;
+                /* Onde o cartão deve "parar" ao rolar (no centro) */
+                scroll-snap-align: center;
+                
+                /* Diminuindo o tamanho como pedido */
+                padding: 20px; /* Padding menor que no desktop (era 30px) */
+                min-width: 250px; /* Largura mínima para não ficar muito espremido em telas muito pequenas */
+            }
+
+            /* Ajuste de fonte para celular */
+            .review-text {
+                 font-size: 0.9rem;
+            }
+            .reviews-header h2 {
+                font-size: 1.7rem;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #aaa;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            font-size: 0.85rem;
+        }
+
+        .imetro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 30px 0;
+        }
+
+        .imetro img {
+            height: 60px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        .imetro img:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- ANIMAÇÕES (KEYFRAMES) --- */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse-green {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); /* Cor atualizada */
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* --- BOTÃO WHATSAPP FLUTUANTE (FIXO NO CANTO) --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--whatsapp-color); /* Verde Oficial */
+            color: #FFF;
+            border-radius: 50%; /* Redondo perfeito */
+            text-align: center;
+            font-size: 32px; /* Ícone um pouco maior */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Sombra mais bonita */
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-green 2s infinite; 
+            text-decoration: none; /* Garante sem sublinhado */
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e; /* Verde escuro do zap no hover */
+            animation: none; 
+            transform: scale(1.1);
+            color: #FFF;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+                padding-left: 20px; 
+                padding-right: 20px;
+            }
+
+            .container {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .sidebar {
+                margin-bottom: 30px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 20px;
+            }
+
+            
+            
+            /* Ajuste do botão flutuante no celular */
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 28px;
+            }
+        }
+
+/* --- SEÇÃO DE CADASTRO RÁPIDO --- */
+.quick-signup-section {
+    padding: 60px 0;
+    background-color: var(--light-gray);
+    text-align: center;
+}
+
+.quick-signup-section h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.quick-signup-section p {
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Para responsividade */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.signup-form .form-group {
+    flex: 1;
+    min-width: 250px; /* Garante que os inputs não fiquem muito pequenos */
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.signup-form .submit-btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-form .submit-btn:hover {
+    background-color: #e67e00; /* Um tom de laranja mais escuro para o hover */
+}
+
+#signup-message {
+    margin-top: 20px;
+    font-weight: 600;
+    min-height: 24px; /* Evita que o layout "pule" quando a mensagem aparece */
+}
+
+.success-message {
+    color: #28a745;
+}
+
+.error-message {
+    color: #dc3545;
+}
+
+
+/* --- MAP SECTION --- */
+.map-section {
+    padding: 60px 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.map-container {
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(10, 35, 66, 0.15);
+}
+        
+    
