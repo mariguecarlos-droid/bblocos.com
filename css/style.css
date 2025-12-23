@@ -883,3 +883,33 @@ header {
 .blog-card:hover .video-overlay {
     background: rgba(0,0,0,0.1);
 }
+
+/* --- WATERMARK / RELEVO EFFECT --- */
+/* Adiciona a marca d'água (logo) em todas as imagens de produtos e blog */
+.product-img, .blog-img {
+    position: relative;
+    z-index: 1; /* Garante contexto de empilhamento */
+}
+
+.product-img::after, .blog-img::after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 45px;
+    height: 45px;
+    background-image: url('../img/logonovo.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3; /* Transparência para efeito de marca d'água sutil */
+    mix-blend-mode: multiply; /* Remove o fundo branco do JPEG se o fundo for claro */
+    pointer-events: none; /* Permite clicar através da marca d'água */
+    filter: grayscale(100%) contrast(150%); /* Efeito de relevo/monocromático */
+    z-index: 2;
+}
+
+/* Ajuste específico para garantir que o overlay de vídeo fique acima da marca d'água se necessário */
+.video-overlay {
+    z-index: 3;
+}
