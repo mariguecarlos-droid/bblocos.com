@@ -650,8 +650,43 @@ header {
             color: #FFF;
         }
 
+        /* --- CHATBOT FLUTUANTE --- */
+        .chatbot-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 100px; /* 25px (bottom) + 60px (wa height) + 15px (gap) */
+            right: 25px;
+            background-color: var(--primary-color);
+            color: #FFF;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s, background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .chatbot-float:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.1);
+            color: #FFF;
+        }
+
         /* --- RESPONSIVIDADE --- */
         @media (max-width: 768px) {
+            .chatbot-float {
+                width: 55px;
+                height: 55px;
+                bottom: 90px; /* 20px + 55px + 15px */
+                right: 20px;
+                font-size: 26px;
+            }
+
             .main-layout {
                 grid-template-columns: 1fr;
                 padding-left: 20px; 
