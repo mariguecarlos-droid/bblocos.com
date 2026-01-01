@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 setTimeout(() => {
                     removeTypingIndicator();
-                    addMessage('bot', 'Obrigado pelo seu contato! Um de nossos atendentes entrará em contato em breve para te ajudar.');
+                    addMessage('bot', 'Obrigado pelo seu contato! Um de nossos atendentes entrará em contato em breve para te ajudar. Se precisar de atendimento imediato, clique no ícone do WhatsApp que está fixo na tela!');
                 }, 1500);
             }
         }
