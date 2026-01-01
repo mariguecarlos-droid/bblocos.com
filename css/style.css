@@ -759,6 +759,29 @@ header {
             color: var(--white);
             align-self: flex-end;
             border-bottom-right-radius: 2px;
+            padding-bottom: 22px; /* Extra space for timestamp */
+        }
+        
+        .message-content {
+            display: block;
+            margin-bottom: 5px; /* Space between content and timestamp */
+        }
+
+        .timestamp {
+            font-size: 0.7em;
+            position: absolute;
+            bottom: 5px; /* Position from the bottom of the message bubble */
+            white-space: nowrap; /* Prevent timestamp from wrapping */
+        }
+
+        .message.bot .timestamp {
+            left: 10px; /* Aligned with bot message */
+            color: #777; /* Darker for light background */
+        }
+
+        .message.user .timestamp {
+            right: 10px; /* Aligned with user message */
+            color: rgba(255, 255, 255, 0.7); /* Lighter for dark background */
         }
 
         .typing-indicator span {

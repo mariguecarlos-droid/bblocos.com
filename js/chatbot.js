@@ -89,7 +89,19 @@ document.addEventListener('DOMContentLoaded', function() {
     function addMessage(sender, text) {
         const msgDiv = document.createElement('div');
         msgDiv.classList.add('message', sender);
-        msgDiv.innerHTML = text; // innerHTML to allow simple formatting if needed
+
+        const messageContent = document.createElement('span');
+        messageContent.classList.add('message-content');
+        messageContent.innerHTML = text; // innerHTML to allow simple formatting if needed
+
+        const timestamp = document.createElement('span');
+        timestamp.classList.add('timestamp');
+        const now = new Date();
+        timestamp.innerText = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+
+        msgDiv.appendChild(messageContent);
+        msgDiv.appendChild(timestamp);
+        
         chatMessages.appendChild(msgDiv);
         scrollToBottom();
     }
