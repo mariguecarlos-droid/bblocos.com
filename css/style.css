@@ -915,6 +915,12 @@ header {
 }
 
 /* --- OFFER BADGE --- */
+@keyframes pulse-badge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
 .offer-badge {
     position: absolute;
     top: 10px;
@@ -929,4 +935,5 @@ header {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    animation: pulse-badge 1.5s infinite ease-in-out;
 }
