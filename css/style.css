@@ -913,3 +913,20 @@ header {
 .video-overlay {
     z-index: 3;
 }
+
+/* --- OFFER BADGE --- */
+.offer-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #d32f2f; /* Strong red */
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
