@@ -1,24 +1,30 @@
-/* --- CHRISTMAS THEME --- */
+/* --- PROMO BANNER THEME --- */
 
-#christmas-banner {
-    background-color: #c0392b; /* Christmas Red */
+#promo-banner {
+    background: linear-gradient(90deg, #FF8C00, #ff4500); /* Laranja Vibrante */
     color: #fff;
-    padding: 10px;
-    position: relative;
-    z-index: 1001;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    overflow: hidden; /* Hide text when it goes out */
-    white-space: nowrap; /* Keep text on one line */
+    padding: 12px 0;
+    width: 100%;
+    position: absolute; /* Para ficar em cima da foto (hero) */
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
-#christmas-banner p {
+#promo-banner p {
     margin: 0;
-    font-weight: bold;
-    font-size: 1.2rem; /* Slightly larger for readability */
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     display: inline-block;
-    padding-left: 100%; /* Push text to start off-screen right */
-    animation: marquee 15s linear infinite;
-    font-family: 'Courier New', Courier, monospace; /* Monospace font for LED look */
+    padding-left: 100%;
+    animation: marquee 20s linear infinite;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 @keyframes marquee {
@@ -29,11 +35,3 @@
         transform: translate(-100%, 0);
     }
 }
-
-
-/* Optional: Add a festive border to the header or specific sections */
-/*
-header {
-    border-bottom: 3px solid #27ae60; 
-}
-*/

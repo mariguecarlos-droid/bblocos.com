@@ -41,6 +41,7 @@
         <div class="container">
             <h1>Produtos de Qualidade</h1>
             <p>Soluções completas e resistentes para sua obra.</p>
+            <a href="#produtos-list" class="hero-btn">Ver Catálogo Completo</a>
         </div>
     </section>
 
@@ -75,7 +76,7 @@
             </div>
         </aside>
 
-        <section class="products-list">
+        <section class="products-list" id="produtos-list">
             <div class="products-header">
                 <h2 class="titulo-categoria">Resistente ao Fogo</h2>
                 <p style="color: #323;">Blocos com furo vertical para ajuste de modulação e alta resistência.</p>
@@ -83,7 +84,7 @@
 
             <div class="products-grid">
                 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                         <img  alt="Bloco Cerâmico BS7 Resistente ao Fogo" width="900" height="900" src="img/linha7/BS7_SITE-900x900.jpg">
@@ -97,7 +98,7 @@
                     
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Bloco Cerâmico BVL19 Resistente ao Fogo" width="900" height="900" src="img/linha11/BV11-2_SITE-900x900.jpg">
@@ -110,7 +111,7 @@
                     </div>
                 </article>
 
-                 <article class="product-card">
+                 <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Bloco Cerâmico BE11-19 Resistente ao Fogo" width="900" height="900" src="img/linha11/BE11-19_SITE-1-900x900.jpg">
@@ -123,7 +124,7 @@
                     </div>
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Bloco Cerâmico C11 Resistente ao Fogo" width="900" height="900" src="img/linha11/C11_SITE-900x900.jpg">
@@ -136,7 +137,7 @@
                     </div>
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Bloco Cerâmico C11-19 Resistente ao Fogo" width="900" height="900" src="img/linha11/C11-19_SITE-900x900.jpg">
@@ -149,7 +150,7 @@
                     </div>
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Bloco Cerâmico BV11-4 Resistente ao Fogo" width="900" height="900" src="img/linha11/BV11-4_SITE-900x900.jpg">
@@ -172,7 +173,7 @@
 
             <div class="products-grid">
                 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                         <img  alt="Bloco de Concreto 9x19x39 cm" width="900" height="900" src="img/blocoCimento/482.webp">
@@ -184,7 +185,7 @@
                     </div>
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Bloco de Concreto 14x19x39 cm" width="900" height="900" src="img/blocoCimento/4842.webp">
@@ -196,7 +197,7 @@
                     </div>
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Bloco de Concreto 14x19x39 cm Vazado" width="900" height="900" src="img/blocoCimento/489.webp">
@@ -208,7 +209,7 @@
                     </div>
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                         <img  alt="Meio Bloco de Concreto 19x19x19 cm" width="900" height="900" src="img/blocoCimento/Meio Bloco de Concreto 19x19x19 cm.webp">
@@ -220,7 +221,7 @@
                     </div>
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Meio Bloco de Concreto 9x19x19 cm" width="900" height="900" src="img/blocoCimento/Meio Bloco de Concreto 9x19x19 cm.webp">
@@ -232,7 +233,7 @@
                     </div>
                 </article>
 
-                <article class="product-card">
+                <article class="product-card reveal">
                     <div class="product-img">
                         <span class="offer-badge">OFERTA</span>
                          <img  alt="Bloco de Concreto Estrutural 14x19x39 cm" width="900" height="900" src="img/blocoCimento/Concreto Estrutural 14x19x39 cm.webp">
@@ -257,7 +258,7 @@
         </section>
     </main>
 
-    <section class="reviews-section">
+    <section class="reviews-section reveal">
         <div class="container">
             <div class="reviews-header">
                 <h2 class="titulo-categoria">Feedbacks</h2>
@@ -453,7 +454,28 @@
                 }
             });
         </script>
-        <script src="js/christmas.js"></script>
+        <script>
+            // Scroll Reveal Logic
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+    </script>
+    <script src="js/christmas.js"></script>
     <script src="js/chatbot.js"></script>
 </body>
 </html>

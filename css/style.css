@@ -1,13 +1,26 @@
 /* --- VARIÁVEIS DE CORES --- */
         :root {
             --primary-color: #0A2342;
+            --primary-light: #163b6b; /* Mais claro para degradês */
             --primary-hover: #1E3A5F;
             --accent-color: #FF8C00;
+            --accent-hover: #ffaa33;
             --text-color: #333333;
-            --light-gray: #f4f4f4;
-            --border-color: #0A2342;
+            --text-light: #555555;
+            --light-gray: #d5dae0; /* Slightly darker than bg for sections */
+            --border-color: #c8d1da;
             --white: #ffffff;
-            --whatsapp-color: #25d366; /* Cor oficial do WhatsApp */
+            --off-white: #e0e5ec; /* Fundo mais escuro e moderno (cinza-azulado) */
+            --whatsapp-color: #25d366;
+            
+            /* --- SOMBRAS E RELEVO (Depth System) --- */
+            --shadow-sm: 0 4px 6px rgba(10, 35, 66, 0.05), 0 1px 3px rgba(10, 35, 66, 0.1);
+            --shadow-md: 0 10px 20px rgba(10, 35, 66, 0.08), 0 6px 6px rgba(10, 35, 66, 0.05);
+            --shadow-lg: 0 20px 40px rgba(10, 35, 66, 0.12), 0 10px 10px rgba(10, 35, 66, 0.05);
+            --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+            
+            --radius-md: 12px;
+            --radius-lg: 20px;
         }
 
         /* --- RESET GERAL --- */
@@ -24,7 +37,7 @@
         body {
             font-family: 'IBM Plex Sans', sans-serif;
             color: var(--text-color);
-            background-color: var(--white);
+            background-color: var(--off-white);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -53,29 +66,46 @@
 
         /* ESTILO DO BOTÃO WHATSAPP (EM LINHA/TEXTO) */
         .WhatsApp {
-            background-color: var(--whatsapp-color);
-            display: inline-flex; /* Mudado para inline-flex para alinhar ícone e texto */
-            align-items: center;  /* Centraliza verticalmente */
-            gap: 10px;            /* Espaço entre ícone e texto */
-            padding: 10px 25px;
-            border-radius: 30px;
-            font-weight: 600;
+            background: linear-gradient(135deg, var(--whatsapp-color), #1ebe57);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
             cursor: pointer;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            color: white !important; /* Força a cor branca no texto */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, background-color 0.3s, box-shadow 0.3s;
+            font-size: 0.95rem;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden; /* Required for shine effect */
+        }
+
+        /* Shine effect pseudo-element */
+        .WhatsApp::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shine 3s infinite;
         }
 
         .WhatsApp:hover {
-            background-color: #1ebe57;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #1ebe57, #128c7e);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
         }
 
         .WhatsApp i {
-            font-size: 1.2rem; /* Tamanho do ícone dentro do botão */
+            font-size: 1.2rem;
+            animation: wiggle 3s infinite; /* Icon wiggles periodically */
         }
 
         /* --- HEADER --- */
@@ -199,8 +229,9 @@ header {
             background-size: cover;
             background-position: center;
             color: var(--white);
-            padding: 80px 0;
+            padding: 100px 0 120px; /* Increased padding for the new button */
             text-align: center;
+            position: relative; /* For banner positioning */
         }
 
         .hero h1, .hero p {
@@ -210,13 +241,39 @@ header {
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.95;
             animation-delay: 0.2s;
             animation-fill-mode: backwards;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            margin-bottom: 30px; /* Space for the button */
+        }
+
+        /* 1. HERO CTA BUTTON */
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeUp 1s ease-out 0.6s backwards;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 140, 0, 0.6);
+            background: linear-gradient(135deg, var(--accent-hover), #ff8800);
+            color: white;
         }
 
         /* --- MAIN CONTENT (GRID) --- */
@@ -229,7 +286,7 @@ header {
 
         /* Sidebar Styles */
         .sidebar {
-            animation: slideRight 1s ease-out;
+            /* Animation handled by Scroll Reveal now */
         }
 
         .sidebar h3 {
@@ -244,24 +301,52 @@ header {
         }
 
         .sidebar ul li {
-            margin-bottom: 10px;
-            transition: padding-left 0.3s;
+            margin-bottom: 15px;
+            /* transition removida para focar na animação do link */
         }
 
-        .sidebar ul li:hover {
-            padding-left: 10px;
-        }
+        /* Removido o hover no li para não conflitar com o link */
 
         .sidebar ul li a {
-            color: #666;
-            display: block;
-            padding: 5px 0;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            border-radius: 50px; /* Formato Pílula Moderno */
+            background-color: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            text-decoration: none;
+        }
+
+        /* Indicativo (Seta Animada) */
+        .sidebar ul li a::after {
+            content: '\f061'; /* FontAwesome Arrow Right */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            opacity: 0.6;
+            transform: translateX(0);
+            transition: transform 0.3s ease, opacity 0.3s;
         }
 
         .sidebar ul li a:hover,
         .sidebar ul li a.active {
             color: var(--primary-color);
-            font-weight: 700;
+            border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.15); /* Sombra laranja suave */
+            transform: translateY(-2px) scale(1.02);
+            padding-left: 25px; /* Texto desliza levemente */
+        }
+
+        .sidebar ul li a:hover::after {
+            opacity: 1;
+            transform: translateX(5px); /* Seta aponta o caminho */
+            color: var(--accent-hover);
         }
 
         .icon-cimento {
@@ -274,13 +359,25 @@ header {
         }
 
         .titulo-categoria {
-            background-color: var(--accent-color); /* Cinza com 50% de opacidade */
-            padding: 4px 15px;       /* Espaçamento interno */
-            border-radius: 8px 0px ;
-            border: 1px solid var(--border-color);       /* Bordas arredondadas */
-            width: fit-content;       /* A caixa ajusta ao tamanho do texto */
-            color: var(--text-color);              /* Texto branco para contraste (opcional) */
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            padding: 6px 20px;
+            border-radius: 50px; /* Fully rounded pills */
+            border: none;
+            width: fit-content;
+            color: var(--white);
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(255, 140, 0, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transform: translateY(0);
+            transition: transform 0.3s;
+        }
+        
+        .titulo-categoria:hover {
+            transform: translateY(-2px);
         }
 
         /* Product List Styles */
@@ -300,70 +397,88 @@ header {
 
         /* --- MUDANÇA 2 AQUI: Ajuste do Cartão Individual --- */
         .product-card {
-            /* width: 150px;  <-- REMOVIDO: Não fixamos mais a largura */
             background: var(--white);
-            border: 1px solid #d7d0d0;
-            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.04); /* Borda muito sutil */
+            border-radius: var(--radius-md);
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            opacity: 0;
-            animation: fadeUp 0.8s forwards;
-            /* Adicionado para garantir que o card ocupe a largura da coluna do grid */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico suave */
             width: 100%; 
+            box-shadow: var(--shadow-sm);
+            position: relative;
         }
 
-        .product-card:nth-child(1) { animation-delay: 0.1s; }
-        .product-card:nth-child(2) { animation-delay: 0.2s; }
-        .product-card:nth-child(3) { animation-delay: 0.3s; }
-        .product-card:nth-child(4) { animation-delay: 0.4s; }
-        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        /* Animation class added by JS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered delays handled via JS or nth-child if simple */
+        .product-card:nth-child(1) { transition-delay: 0.1s; }
+        .product-card:nth-child(2) { transition-delay: 0.2s; }
+        .product-card:nth-child(3) { transition-delay: 0.3s; }
+        .product-card:nth-child(4) { transition-delay: 0.4s; }
+        .product-card:nth-child(5) { transition-delay: 0.5s; }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(10, 35, 66, 0.306);
-            border-color: var(--primary-color);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(10, 35, 66, 0.1);
         }
 
         .product-img {
-            height: 140px;
+            height: 160px; /* Aumentei um pouco */
             width: 100%;
-            background-color: #f9f9f9;
+            background: linear-gradient(to bottom, #ffffff, #f4f7fa); /* Degradê sutil no fundo da imagem */
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 10px;
         }
 
         .product-img img {
             max-height: 90%;
             object-fit: contain;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1)); /* Sombra no próprio objeto (bloco) */
         }
 
         .product-card:hover .product-img img {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
         }
 
         .product-info {
             padding: 20px;
             text-align: center;
+            background-color: var(--white);
         }
 
         .product-info h3 {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 5px;
             color: var(--primary-color);
+            font-weight: 700;
         }
 
         .product-info span {
             display: block;
             font-size: 0.9rem;
-            color: #777;
-            margin-bottom: 10px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
         .product-info p {
             font-weight: 600;
             font-size: 0.95rem;
+            color: var(--accent-color);
         }
 
         .banner-destaque {
@@ -376,6 +491,8 @@ header {
             width: auto;
             margin: 0 auto;
         }
+
+
 
         /* --- REVIEWS --- */
         .reviews-section {
@@ -405,22 +522,26 @@ header {
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             /* Adicionado padding inferior para a sombra não cortar ao rolar */
-            padding-bottom: 20px; 
+            padding-bottom: 30px; 
         }
 
         .review-card {
             background: var(--white);
-            padding: 10px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(10, 35, 66, 0.705);
+            padding: 25px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
             border-left: 5px solid var(--primary-color);
-            transition: transform 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             /* Adicionado para o cartão ocupar a altura total se necessário */
             height: 100%;
+            border-top: 1px solid rgba(0,0,0,0.02);
+            border-right: 1px solid rgba(0,0,0,0.02);
+            border-bottom: 1px solid rgba(0,0,0,0.02);
         }
 
         .review-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
         }
 
         .review-header {
@@ -610,16 +731,29 @@ header {
         @keyframes pulse-green {
             0% {
                 transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); /* Cor atualizada */
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
             }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
             }
             100% {
                 transform: scale(1);
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
+        }
+
+        @keyframes shine {
+            0% { left: -100%; opacity: 0; }
+            20% { left: 100%; opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+
+        @keyframes wiggle {
+            0%, 80%, 100% { transform: rotate(0deg); }
+            85% { transform: rotate(-10deg); }
+            90% { transform: rotate(10deg); }
+            95% { transform: rotate(-10deg); }
         }
 
         /* --- BOTÃO WHATSAPP FLUTUANTE (FIXO NO CANTO) --- */
@@ -629,25 +763,32 @@ header {
             height: 60px;
             bottom: 25px;
             right: 25px;
-            background-color: var(--whatsapp-color); /* Verde Oficial */
+            background: linear-gradient(135deg, var(--whatsapp-color), #128c7e);
             color: #FFF;
             border-radius: 50%; /* Redondo perfeito */
             text-align: center;
             font-size: 32px; /* Ícone um pouco maior */
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Sombra mais bonita */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 2px 5px rgba(255,255,255,0.3), inset 0 -2px 5px rgba(0,0,0,0.1); /* 3D effect */
             z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
             animation: pulse-green 2s infinite; 
             text-decoration: none; /* Garante sem sublinhado */
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        /* Add wiggle to the icon inside the float button */
+        .whatsapp-float i {
+            animation: wiggle 4s infinite ease-in-out;
         }
 
         .whatsapp-float:hover {
-            background-color: #128c7e; /* Verde escuro do zap no hover */
+            background: linear-gradient(135deg, #1ebe57, #075e54);
             animation: none; 
             transform: scale(1.1);
             color: #FFF;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
         }
 
         /* --- CHATBOT FLUTUANTE --- */
@@ -657,24 +798,26 @@ header {
             height: 60px;
             bottom: 100px; /* 25px (bottom) + 60px (wa height) + 15px (gap) */
             right: 25px;
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             color: #FFF;
             border-radius: 50%;
             text-align: center;
             font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 2px 5px rgba(255,255,255,0.2);
             z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.3s, background-color 0.3s;
             text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.1);
         }
 
         .chatbot-float:hover {
-            background-color: var(--primary-hover);
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
             transform: scale(1.1);
             color: #FFF;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
         /* --- CHAT WINDOW --- */
@@ -892,6 +1035,7 @@ header {
     padding: 60px 0;
     background-color: var(--light-gray);
     text-align: center;
+    /* Removido sombra e margens para corrigir o layout */
 }
 
 .quick-signup-section h2 {
@@ -925,26 +1069,42 @@ header {
 
 .signup-form input {
     width: 100%;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 15px 25px;
+    border: 2px solid transparent;
+    border-radius: 50px; /* Pílula igual aos botões */
     font-size: 1rem;
+    background-color: var(--white);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06), 0 2px 5px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.signup-form input:focus,
+.signup-form input:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.2); /* Sombra laranja suave (Glow) */
+    border-color: var(--accent-color);
 }
 
 .signup-form .submit-btn {
-    padding: 15px 30px;
+    padding: 15px 35px;
     border: none;
-    border-radius: 5px;
-    background-color: var(--accent-color);
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
     color: var(--white);
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .signup-form .submit-btn:hover {
-    background-color: #e67e00; /* Um tom de laranja mais escuro para o hover */
+    background: linear-gradient(135deg, #e67e00, #d97700);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 140, 0, 0.4);
 }
 
 #signup-message {
