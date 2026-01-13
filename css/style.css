@@ -316,6 +316,7 @@
             box-shadow: 0 2px 5px rgba(10, 35, 66, 0.2); /* Sombra azul */
             text-decoration: none;
             animation: pulse-primary 3s infinite; /* Animação de pulso */
+            width: 50%; /* Cumprimento diminuído pela metade */
         }
 
         /* Indicativo (Seta Animada) */
@@ -336,8 +337,7 @@
             background: linear-gradient(135deg, var(--primary-light), var(--primary-hover)); /* Degradê mais escuro no hover */
             border-color: rgba(255,255,255,0.4);
             box-shadow: 0 5px 15px rgba(10, 35, 66, 0.4); /* Sombra azul mais forte */
-            transform: translateY(-2px) scale(1.02);
-            padding-left: 22px; /* Texto desliza levemente, ajustado */
+            transform: translateX(5px) scale(1.03); /* Levemente para a frente e expande */
         }
 
         .sidebar ul li a:hover::after {
