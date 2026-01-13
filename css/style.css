@@ -104,134 +104,128 @@
         }
 
         .WhatsApp i {
-            font-size: 1.2rem;
-            animation: wiggle 3s infinite; /* Icon wiggles periodically */
+            font-size: 1.2rem; /* Tamanho do ícone dentro do botão */
         }
 
         /* --- HEADER --- */
         /* --- SEU CSS ORIGINAL (Mantido) --- */
-header {
-    background: var(--white);
-    box-shadow: 0 2px 10px rgba(12, 14, 133, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
-    /* Adicionei padding lateral para o conteúdo não colar na borda no celular */
-    padding: 0 20px; 
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.logo img {
-    height: 50px;
-    width: auto;
-}
-
-.nav-menu ul {
-    display: flex;
-    gap: 25px;
-    list-style: none; /* Garante que não tenha bolinhas */
-}
-
-.nav-menu a {
-    text-decoration: none; /* Garante que não tenha sublinhado padrão */
-    font-weight: 900;
-    color: var(--primary-color);
-    position: relative;
-}
-
-.nav-menu a:hover {
-    color: var(--accent-color);
-}
-
-/* --- NOVAS ADIÇÕES: CSS DO MENU HAMBÚRGUER --- */
-
-/* Estilo das barras do ícone (escondido no PC) */
-.hamburger {
-    display: none;
-    cursor: pointer;
-}
-
-.bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px auto;
-    transition: all 0.3s ease-in-out;
-    background-color: var(--primary-color); /* Usa a cor da sua logo */
-}
-
-/* --- RESPONSIVIDADE (CELULAR - Max 768px) --- */
-@media (max-width: 768px) {
-    /* Mostra o ícone do menu */
-    .hamburger {
-        display: block;
-    }
-
-    /* Transforma o ícone em um 'X' quando ativo */
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* Estilização do menu quando aberto no celular */
-    .nav-menu {
-        position: fixed;
-        left: 100%; /* Começa escondido fora da tela */
-        top: 80px; /* Altura exata do seu header-content */
-        gap: 0;
-        font-size: 25px;
-        flex-direction: column;
-        background-color: var(--white); /* Fundo branco */
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-        display: flex;
-        height: 90vh;
-        z-index: 999;
-    }
-
-    /* Classe que o JS vai adicionar para mostrar o menu */
-    .nav-menu.active {
-        left: 0;
-    }
-
-    .nav-menu ul {
-        flex-direction: column;
-        padding: 20px 0;
-        gap: 20px;
-    }
-}
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(12, 14, 133, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            padding: 0 20px; 
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .nav-menu ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 900;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+        
+        /* --- NOVAS ADIÇÕES: CSS DO MENU HAMBÚRGUER --- */
+        
+        /* Estilo das barras do ícone (escondido no PC) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--primary-color);
+        }
+        
+        /* --- RESPONSIVIDADE (CELULAR - Max 768px) --- */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+        
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+        
+            .nav-menu {
+                position: fixed;
+                left: 100%;
+                top: 80px;
+                gap: 0;
+                font-size: 25px;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                display: flex;
+                height: 90vh;
+                z-index: 999;
+            }
+        
+            .nav-menu.active {
+                left: 0;
+            }
+        
+            .nav-menu ul {
+                flex-direction: column;
+                padding: 20px 0;
+                gap: 20px;
+            }
+        }
         /* --- HERO SECTION --- */
         .hero {
             background-color: var(--primary-color);
             background-image: linear-gradient(rgba(10, 35, 66, 0.5), rgba(10, 35, 66, 0.7)), url('../img/fundo.jpeg');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed; /* EFEITO PARALLAX ATIVADO */
             color: var(--white);
-            padding: 100px 0 120px; /* Increased padding for the new button */
+            padding: 100px 0 120px;
             text-align: center;
-            position: relative; /* For banner positioning */
+            position: relative;
         }
 
         .hero h1, .hero p {
@@ -258,7 +252,7 @@ header {
             display: inline-block;
             background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
             color: white;
-            padding: 15px 40px;
+            padding: 12px 35px; /* Altura diminuída */
             font-size: 1.1rem;
             font-weight: 700;
             border-radius: 50px;
@@ -266,7 +260,7 @@ header {
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            animation: fadeUp 1s ease-out 0.6s backwards;
+            animation: pulse-orange 2s infinite; /* Animação de pulsar */
         }
 
         .hero-btn:hover {
@@ -308,18 +302,20 @@ header {
         /* Removido o hover no li para não conflitar com o link */
 
         .sidebar ul li a {
-            color: var(--text-color);
+            color: white; /* Cor do texto branca */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 20px;
+            padding: 10px 18px; /* Padding diminuído */
             border-radius: 50px; /* Formato Pílula Moderno */
-            background-color: var(--white);
-            border: 1px solid rgba(0,0,0,0.06);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); /* Degradê da cor do chatbot */
+            border: 1px solid rgba(255,255,255,0.2); /* Borda mais clara */
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            font-size: 0.9rem; /* Tamanho da fonte diminuído */
+            box-shadow: 0 2px 5px rgba(10, 35, 66, 0.2); /* Sombra azul */
             text-decoration: none;
+            animation: pulse-primary 3s infinite; /* Animação de pulso */
         }
 
         /* Indicativo (Seta Animada) */
@@ -327,26 +323,27 @@ header {
             content: '\f061'; /* FontAwesome Arrow Right */
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
-            font-size: 0.9rem;
-            color: var(--accent-color);
-            opacity: 0.6;
+            font-size: 0.8rem; /* Tamanho da seta ajustado */
+            color: white; /* Seta branca */
+            opacity: 0.8;
             transform: translateX(0);
             transition: transform 0.3s ease, opacity 0.3s;
         }
 
         .sidebar ul li a:hover,
         .sidebar ul li a.active {
-            color: var(--primary-color);
-            border-color: var(--accent-color);
-            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.15); /* Sombra laranja suave */
+            color: white; /* Texto branco no hover */
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-hover)); /* Degradê mais escuro no hover */
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 5px 15px rgba(10, 35, 66, 0.4); /* Sombra azul mais forte */
             transform: translateY(-2px) scale(1.02);
-            padding-left: 25px; /* Texto desliza levemente */
+            padding-left: 22px; /* Texto desliza levemente, ajustado */
         }
 
         .sidebar ul li a:hover::after {
             opacity: 1;
             transform: translateX(5px); /* Seta aponta o caminho */
-            color: var(--accent-hover);
+            color: white;
         }
 
         .icon-cimento {
@@ -494,142 +491,131 @@ header {
 
 
 
-        /* --- REVIEWS --- */
+        /* --- REVIEWS (NOVO ESTILO DARK COMPACTO) --- */
         .reviews-section {
-            background-color: #f9f9f9;
-            padding: 80px 0;
-            border-top: 4px solid var(--primary-color);
+            background-color: var(--primary-color); /* Fundo Azul Escuro */
+            padding: 50px 0 60px; /* Altura reduzida */
+            border-top: none;
+            position: relative;
         }
 
         .reviews-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         .reviews-header h2 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            color: var(--white); /* Título branco */
+            margin-bottom: 5px;
+            /* Remove background gradient from global class for this specific header if needed, 
+               but since .titulo-categoria handles it, we might keep it or override opacity.
+               Let's keep the pill style but ensure it pops. */
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .reviews-header p {
-            color: #666;
+            color: rgba(255, 255, 255, 0.8); /* Texto cinza claro */
+            font-size: 0.95rem;
         }
 
-        /* --- CSS ORIGINAL DOS REVIEWS (Para Desktop) --- */
         .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex; /* Slider Horizontal */
             gap: 30px;
-            /* Adicionado padding inferior para a sombra não cortar ao rolar */
-            padding-bottom: 30px; 
+            padding: 20px 0 40px;
+            overflow-x: hidden; /* Esconde a barra de rolagem */
+            width: 100%;
+            mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%); /* Degradê mais fraco nas bordas */
         }
+
+        /* Container que vai mover */
+        .reviews-track {
+            display: flex;
+            gap: 30px;
+            animation: scroll-loop 40s linear infinite;
+            width: max-content; /* Largura baseada no conteúdo */
+        }
+
+        .reviews-grid:hover .reviews-track {
+            animation-play-state: paused; /* Para o loop ao passar o mouse */
+        }
+
+        @keyframes scroll-loop {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Move metade (assumindo que duplicamos o conteúdo) */
+        }
+
+        /* Custom Scrollbar REMOVED since it's auto-scroll now */
+        .reviews-grid::-webkit-scrollbar { display: none; }
 
         .review-card {
             background: var(--white);
-            padding: 25px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-sm);
-            border-left: 5px solid var(--primary-color);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* Adicionado para o cartão ocupar a altura total se necessário */
-            height: 100%;
-            border-top: 1px solid rgba(0,0,0,0.02);
-            border-right: 1px solid rgba(0,0,0,0.02);
-            border-bottom: 1px solid rgba(0,0,0,0.02);
+            padding: 15px 20px; /* Padding reduzido (Compacto) */
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            min-width: 300px; /* Largura um pouco maior para leitura */
+            max-width: 300px;
+            flex: 0 0 auto; /* Não encolher */
+            border-left: 4px solid var(--accent-color); /* Detalhe laranja */
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .review-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
         }
 
         .review-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .user-avatar {
-            width: 50px;
-            height: 50px;
-            background-color: #ddd;
+            width: 40px; /* Avatar menor */
+            height: 40px;
+            background-color: #eee;
             border-radius: 50%;
-            margin-right: 15px;
+            margin-right: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #555;
-            background-image: url('');
-            background-size: cover;
         }
 
         .user-info h4 {
-            font-size: 1rem;
-            margin-bottom: 2px;
+            font-size: 0.95rem;
+            margin-bottom: 0;
             color: var(--primary-color);
+            font-weight: 700;
         }
 
         .user-info span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #888;
+            display: block;
         }
 
         .stars {
             color: #f5c518;
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+            margin-bottom: 10px;
+            font-size: 0.8rem;
         }
 
         .review-text {
             font-style: italic;
             color: #555;
-            line-height: 1.6;
+            line-height: 1.4; /* Linha mais compacta */
+            font-size: 0.85rem;
         }
 
-        /* --- NOVA ADIÇÃO: CARROSSEL DE REVIEWS NO CELULAR --- */
+        /* Remove old mobile media query for reviews since grid is now flex everywhere */
         @media (max-width: 768px) {
-            .reviews-grid {
-                /* Muda de Grid para Flexbox */
-                display: flex;
-                /* Permite rolagem horizontal */
-                overflow-x: auto;
-                /* Cria o efeito de "imã" ao rolar (scroll snap) */
-                scroll-snap-type: x mandatory;
-                /* Espaçamento menor entre os cards */
-                gap: 20px;
-                /* Remove a barra de rolagem visualmente (opcional, mas fica mais limpo) */
-                scrollbar-width: none; /* Firefox */
-                -ms-overflow-style: none;  /* IE 10+ */
-                padding-bottom: 25px; /* Espaço extra para a sombra não cortar */
-                
-                /* Garante uma rolagem suave no iOS */
-                -webkit-overflow-scrolling: touch;
-            }
-
-            /* Esconde a barra de rolagem no Chrome/Safari */
-            .reviews-grid::-webkit-scrollbar {
-                display: none;
-            }
-
-            .review-card {
-                /* O cartão não vai encolher (0) nem crescer (0), e terá uma largura base de 85% da tela */
-                flex: 0 0 85%;
-                /* Onde o cartão deve "parar" ao rolar (no centro) */
-                scroll-snap-align: center;
-                
-                /* Diminuindo o tamanho como pedido */
-                padding: 20px; /* Padding menor que no desktop (era 30px) */
-                min-width: 250px; /* Largura mínima para não ficar muito espremido em telas muito pequenas */
-            }
-
-            /* Ajuste de fonte para celular */
-            .review-text {
-                 font-size: 0.9rem;
-            }
-            .reviews-header h2 {
-                font-size: 1.7rem;
+             .reviews-header h2 {
+                font-size: 1.5rem;
             }
         }
 
@@ -754,6 +740,36 @@ header {
             85% { transform: rotate(-10deg); }
             90% { transform: rotate(10deg); }
             95% { transform: rotate(-10deg); }
+        }
+        
+        @keyframes pulse-orange {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.7); /* Accent color pulse */
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 15px rgba(255, 140, 0, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
+            }
+        }
+
+        @keyframes pulse-primary {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(10, 35, 66, 0.5); /* Primary color pulse */
+            }
+            50% {
+                transform: scale(1.03);
+                box-shadow: 0 0 0 10px rgba(10, 35, 66, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(10, 35, 66, 0);
+            }
         }
 
         /* --- BOTÃO WHATSAPP FLUTUANTE (FIXO NO CANTO) --- */
@@ -1122,19 +1138,123 @@ header {
 }
 
 
-/* --- MAP SECTION --- */
+/* --- MAP SECTION (PAINEL INTEGRADO) --- */
 .map-section {
-    padding: 60px 0;
-    background-color: var(--white);
-    text-align: center;
+    padding: 60px 0 80px;
+    background-color: var(--light-gray); /* Cor de fundo igual a do cadastro */
+}
+
+.location-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    height: 400px; /* Altura diminuída para o mapa no desktop */
+    margin-top: 20px;
 }
 
 .map-container {
-    max-width: 100%;
-    margin: 0 auto;
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 8px 20px rgba(10, 35, 66, 0.15);
+    width: 100%;
+    height: 100%;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: saturate(1.1); /* Deixa o mapa um pouco mais vivo */
+}
+
+/* Cartão Flutuante */
+.location-card {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    padding: 35px;
+    border-radius: var(--radius-md);
+    max-width: 380px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-left: 5px solid var(--accent-color);
+    z-index: 10;
+}
+
+.location-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.location-info {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+.location-info li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.location-info i {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-top: 3px;
+}
+
+.route-btn {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    padding: 12px 0;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(10, 35, 66, 0.3);
+    transition: all 0.3s ease;
+    animation: pulse-primary 3s infinite;
+}
+
+.route-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(10, 35, 66, 0.5);
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-hover));
+    color: white;
+}
+
+/* Responsividade do Mapa */
+@media (max-width: 768px) {
+    .location-wrapper {
+        height: auto;
+        display: flex;
+        flex-direction: column-reverse; /* Mapa embaixo, card em cima */
+        box-shadow: none; /* Remove sombra do container geral */
+        overflow: visible;
+    }
+
+    .map-container {
+        height: 300px; /* Altura diminuída para o mapa no mobile */
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-md);
+        overflow: hidden;
+    }
+
+    .location-card {
+        position: static; /* Remove posição absoluta */
+        max-width: 100%;
+        margin-bottom: 20px;
+        border-radius: var(--radius-md);
+        border-left: none;
+        border-top: 5px solid var(--accent-color);
+    }
 }
 
 
