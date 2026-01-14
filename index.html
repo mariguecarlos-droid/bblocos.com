@@ -6,7 +6,7 @@
     <meta name="keywords" content="blocos de concreto, blocos de cerâmica, material de construção, construção civil, São Paulo">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBlocos</title>
-    <link rel="shortcut icon" href="img_blog/Gemini_Generated_Image_6j1oed6j1oed6j1o.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logonovo.jpeg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -18,7 +18,7 @@
 <header>
     <div class="container header-content">
         <div class="logo">
-            <img alt="Logotipo da empresa Tijo Construções" src="img/logonovo.jpeg" width="150" height="50">
+            <img alt="Logotipo da empresa bblocos" src="img/logonovo.jpeg" width="150" height="50">
         </div>
 
         <div class="hamburger">
@@ -505,7 +505,7 @@
                 const nome = document.getElementById('signup-nome').value;
                 const telefone = document.getElementById('signup-telefone').value;
     
-                signupMessageDiv.textContent = '';
+                signupMessageDiv.textContent = 'Enviando...';
                 signupMessageDiv.className = '';
     
                 try {
@@ -516,6 +516,15 @@
                         },
                         body: JSON.stringify({ nome, telefone }),
                     });
+
+                    // Verifica se a resposta é realmente JSON
+                    const contentType = response.headers.get("content-type");
+                    if (!contentType || !contentType.includes("application/json")) {
+                        // Se não for JSON (ex: página de erro HTML), lê como texto
+                        const text = await response.text();
+                        console.error("Erro do servidor (HTML recebido):", text);
+                        throw new Error("O servidor está indisponível ou em manutenção. Tente novamente mais tarde.");
+                    }
     
                     const result = await response.json();
     
@@ -529,6 +538,7 @@
                 } catch (error) {
                     signupMessageDiv.textContent = error.message;
                     signupMessageDiv.classList.add('error-message');
+                    console.error(error);
                 }
             });
         </script>
